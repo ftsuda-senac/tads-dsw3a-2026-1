@@ -1,5 +1,6 @@
 package br.senac.tads.dsw.dadospessoais;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.http.HttpStatus;
@@ -18,6 +19,11 @@ public class PessoaController {
   // POR QUE DEVE SER ASSIM?
   public PessoaController(PessoaService pessoaService) {
     this.pessoaService = pessoaService;
+  }
+
+  @GetMapping
+  public List<Pessoa> obterPessoas() {
+	return pessoaService.obterPessoas();
   }
 
   @GetMapping("/{username}")
