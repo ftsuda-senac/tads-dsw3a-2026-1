@@ -1,14 +1,16 @@
 package br.senac.tads.dsw.dadospessoais;
 
 import java.time.LocalDate;
+import java.util.List;
 
+import br.senac.tads.dsw.dadospessoais.validacao.SenhasIguais;
 import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.PastOrPresent;
 import jakarta.validation.constraints.Size;
 
+@SenhasIguais(message = "Preste atenção na senha seu burro")
 public class Pessoa {
 
 	private Integer id;
@@ -29,6 +31,15 @@ public class Pessoa {
 	@NotNull
 	@PastOrPresent
 	private LocalDate dataNascimento;
+
+	@NotBlank
+	@Size(min = 8)
+	private String senha;
+
+	private String senhaRepeticao;
+
+	@Size(min = 1, message = "Escolha pelo menos 1 conhecimento")
+	private List<String> conhecimentos;
 
 	public Pessoa() {
 	}
@@ -80,5 +91,30 @@ public class Pessoa {
 	public void setDataNascimento(LocalDate dataNascimento) {
 		this.dataNascimento = dataNascimento;
 	}
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
+
+    public String getSenhaRepeticao() {
+        return senhaRepeticao;
+    }
+
+    public void setSenhaRepeticao(String senhaRepeticao) {
+        this.senhaRepeticao = senhaRepeticao;
+    }
+
+    public List<String> getConhecimentos() {
+        return conhecimentos;
+    }
+
+    public void setConhecimentos(List<String> conhecimentos) {
+        this.conhecimentos = conhecimentos;
+    }
+
 
 }
