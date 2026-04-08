@@ -8,6 +8,7 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.PastOrPresent;
+import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 
 @SenhasIguais(message = "Preste atenção na senha seu burro")
@@ -32,8 +33,10 @@ public class Pessoa {
 	@PastOrPresent
 	private LocalDate dataNascimento;
 
+	// Explicação da expressão regular abaixo em https://stackoverflow.com/a/18181478
+	// Teste de regex online: https://regex101.com/
+	@Pattern(regexp = "(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[\\W_]).{8,}")
 	@NotBlank
-	@Size(min = 8)
 	private String senha;
 
 	private String senhaRepeticao;
