@@ -45,8 +45,8 @@ public class PessoaController {
 		return pessoa;
 	}
 
-	@PostMapping
-	public ResponseEntity<?> incluirNovo(@RequestBody Pessoa pessoa) {
+	@PostMapping("/sem-validacao")
+	public ResponseEntity<?> incluirNovoSemValidacao(@RequestBody Pessoa pessoa) {
 		pessoaService.incluirNovo(pessoa);
 		// URI location = URI.create("http://localhost:8080/pessoas/" + pessoa.getUsername());
 		URI location = ServletUriComponentsBuilder //
@@ -57,8 +57,8 @@ public class PessoaController {
 		return ResponseEntity.created(location).build();
 	}
 
-	@PostMapping("/validacao")
-	public ResponseEntity<?> incluirNovoComValidacao(@RequestBody @Valid Pessoa pessoa) {
+	@PostMapping
+	public ResponseEntity<?> incluirNovo(@RequestBody @Valid Pessoa pessoa) {
 		pessoaService.incluirNovo(pessoa);
 		URI location = ServletUriComponentsBuilder //
 			.fromCurrentRequestUri() //
