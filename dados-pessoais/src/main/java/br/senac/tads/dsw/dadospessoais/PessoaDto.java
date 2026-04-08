@@ -12,7 +12,7 @@ import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 
 @SenhasIguais(message = "Preste atenção na senha seu burro")
-public class Pessoa {
+public class PessoaDto {
 
 	private Integer id;
 
@@ -44,10 +44,10 @@ public class Pessoa {
 	@Size(min = 1, message = "Escolha pelo menos 1 conhecimento")
 	private List<String> conhecimentos;
 
-	public Pessoa() {
+	public PessoaDto() {
 	}
 
-	public Pessoa(Integer id, String username, String nome, String email, LocalDate dataNascimento) {
+	public PessoaDto(Integer id, String username, String nome, String email, LocalDate dataNascimento) {
 		this.id = id;
 		this.username = username;
 		this.nome = nome;

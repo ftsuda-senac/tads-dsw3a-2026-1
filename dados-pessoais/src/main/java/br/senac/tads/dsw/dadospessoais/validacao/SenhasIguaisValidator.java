@@ -1,11 +1,11 @@
 package br.senac.tads.dsw.dadospessoais.validacao;
 
-import br.senac.tads.dsw.dadospessoais.Pessoa;
+import br.senac.tads.dsw.dadospessoais.PessoaDto;
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
 
 public class SenhasIguaisValidator implements
-	ConstraintValidator<SenhasIguais, Pessoa> {
+	ConstraintValidator<SenhasIguais, PessoaDto> {
 
 	private String mensagem;
 
@@ -17,7 +17,7 @@ public class SenhasIguaisValidator implements
 
 
 	@Override
-	public boolean isValid(Pessoa pessoa, ConstraintValidatorContext context) {
+	public boolean isValid(PessoaDto pessoa, ConstraintValidatorContext context) {
 		// if (pessoa != null && pessoa.getSenha().equals(pessoa.getSenhaRepeticao())) {
 		// 	return true;
 		// } else {
